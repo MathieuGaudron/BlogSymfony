@@ -10,7 +10,14 @@
         <div class="auth-card shadow-lg">
           <div class="p-4 p-md-5">
 
-            <h1 class="auth-title h3 mb-2">Bonjour {{ app.user.firstName }}</h1>
+            <h1 class="auth-title h3 mb-2">Bonjour {{ app.user.firstName }} 👋</h1>
+            <p class="auth-label mb-4">Bienvenue sur ton profil.</p>
+
+            {% if is_granted('ROLE_ADMIN') %}
+              <div class="mb-3 text-center">
+                <a class="auth-link" href="{{ path('admin_dashboard') }}">Accéder au dashboard admin</a>
+              </div>
+            {% endif %}
 
             <div class="d-grid gap-2">
               <a class="btn btn-auth" href="{{ path('app_logout') }}">Se déconnecter</a>
