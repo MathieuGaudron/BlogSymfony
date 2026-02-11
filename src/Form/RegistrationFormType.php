@@ -23,18 +23,21 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
                 'constraints' => [
                     new Assert\NotBlank(message: 'Prénom obligatoire'),
                     new Assert\Length(max: 100),
                 ],
             ])
             ->add('lastName', TextType::class, [
+                'label' => 'Nom',
                 'constraints' => [
                     new Assert\NotBlank(message: 'Nom obligatoire'),
                     new Assert\Length(max: 100),
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
+                'label' => 'Mot de passe',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [

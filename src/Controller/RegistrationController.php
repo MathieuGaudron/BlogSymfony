@@ -19,7 +19,6 @@ class RegistrationController extends AbstractController
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $em
     ): Response {
-        // Si déjà connecté, on peut rediriger
         if ($this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
@@ -32,14 +31,13 @@ class RegistrationController extends AbstractController
             $plainPassword = (string) $form->get('plainPassword')->getData();
 
             $user->setPassword($passwordHasher->hashPassword($user, $plainPassword));
-            $user->setRoles(['ROLE_USER']); // sécurité
+            $user->setRoles(['ROLE_USER']);
 
             $em->persist($user);
 
             try {
                 $em->flush();
             } catch (\Throwable $e) {
-                // Cas le plus courant : email unique déjà pris
                 $this->addFlash('error', "Cet email est déjà utilisé.");
                 return $this->redirectToRoute('app_register');
             }
