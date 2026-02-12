@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes posts{% endblock %}
+
+{% block body %}
+<div class="auth-bg">
+  <div class="admin-wrap">
+
+    <div class="home-head">
+      <h1 class="home-title">Mes posts</h1>
+      <a class="btn btn-auth home-add home-add--small" href="{{ path('posts_new') }}">+ Nouveau post</a>
+    </div>
+
+    <div class="admin-sep"></div>
+
+    {% if posts is empty %}
+      <p class="admin-empty">Tu n'as encore publié aucun post.</p>
+    {% else %}
+      <div class="posts-grid">
+        {% for post in posts %}
+          <article class="post-card">
+
+            <div class="post-head">
+              <h2 class="post-title">{{ post.title }}</h2>
+
+              <div class="post-meta">
+                <span>{{ post.publishedAt|date('d/m/Y H:i') }}</span>
+                {% if post.category %}
+                  <span>•</span>
+                  <span>{{ post.category.name ?? post.category }}</span>
+                {% endif %}
+              </div>
+            </div>
+
+            {% if post.picture %}
+              {# Lightbox (CSS : .lightbox:target) #}
+              <a class="post-img-link" href="#img-{{ post.id }}">
+                <img class="post-img" src="{{ asset('uploads/posts/' ~ post.picture) }}" alt="{{ post.title }}">
+              </a>
+
+              <div id="img-{{ post.id }}" class="lightbox">
+                <a href="#" class="lightbox-close" aria-label="Fermer"></a>
+                <img class="lightbox-img" src="{{ asset('uploads/posts/' ~ post.picture) }}" alt="{{ post.title }}">
+              </div>
+            {% endif %}
+
+            <p class="post-content">{{ post.content }}</p>
+
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="mt-4">
+      <a class="admin-link" href="{{ path('app_profile') }}">← Retour profil</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -59,4 +59,21 @@ class PostController extends AbstractController
             'is_edit' => false,
         ]);
     }
+
+    #[Route('/profile/posts', name: 'app_profile_posts', methods: ['GET'])]
+        public function myPosts(PostRepository $postRepository): Response
+        {
+            $this->denyAccessUnlessGranted('ROLE_USER');
+
+            $user = $this->getUser();
+
+            $posts = $postRepository->findBy(
+                ['author' => $user],
+                ['publishedAt' => 'DESC']
+            );
+
+            return $this->render('profile/posts.html.twig', [
+                'posts' => $posts,
+            ]);
+}
 }
