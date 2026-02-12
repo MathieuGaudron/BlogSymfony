@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Admin - {{ is_edit ? 'Modifier' : 'Ajouter' }} une catégorie
+{% endblock %}
+
+{% block body %}
+<div class="auth-bg">
+  <div class="admin-wrap">
+
+    <div class="admin-head">
+      <h1 class="admin-title">{{ is_edit ? 'Modifier' : 'Ajouter' }} une catégorie</h1>
+      <a class="admin-back" href="{{ path('admin_categories_index') }}">← Retour</a>
+    </div>
+
+    <div class="admin-sep"></div>
+
+    <div class="admin-form-card">
+      {{ form_start(form, { attr: { class: 'admin-form' } }) }}
+
+        <div class="admin-field">
+          {{ form_label(form.name, null, { label_attr: { class: 'admin-label' } }) }}
+          {{ form_widget(form.name, { attr: { class: 'admin-control', placeholder: 'Ex: Dessert, Boisson...' } }) }}
+          {{ form_errors(form.name) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <div class="admin-form-actions">
+          <button class="btn-auth admin-submit" type="submit">
+            {{ is_edit ? 'Enregistrer' : 'Créer' }}
+          </button>
+        </div>
+
+      {{ form_end(form) }}
+    </div>
+  </div>
+</div>
+{% endblock %} 

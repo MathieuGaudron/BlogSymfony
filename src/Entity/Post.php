@@ -21,7 +21,7 @@ class Post
     #[ORM\Column]
     private ?\DateTimeImmutable $publishedAt = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
     #[ORM\ManyToOne]
