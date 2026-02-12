@@ -17,7 +17,7 @@ class HomeController extends AbstractController
         PostRepository $postRepository,
         CategoryRepository $categoryRepository
     ): Response {
-        $categoryId = $request->query->get('category'); // ex: "3" ou null
+        $categoryId = $request->query->get('category'); 
 
         $criteria = [];
         if ($categoryId) {
