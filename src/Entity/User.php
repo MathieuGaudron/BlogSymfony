@@ -39,17 +39,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(options: ['default' => true])]
+    private bool $isActive = true;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->roles = ['ROLE_USER'];
+        $this->isActive = true; 
     }
 
     public function getId(): ?int { return $this->id; }
 
     public function getEmail(): ?string { return $this->email; }
     public function setEmail(string $email): static { $this->email = $email; return $this; }
-
 
     public function getUserIdentifier(): string
     {
@@ -68,10 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPassword(): ?string { return $this->password; }
     public function setPassword(string $password): static { $this->password = $password; return $this; }
 
-    public function eraseCredentials(): void
-    {
-
-    }
+    public function eraseCredentials(): void {}
 
     public function getFirstName(): ?string { return $this->firstName; }
     public function setFirstName(string $firstName): static { $this->firstName = $firstName; return $this; }
@@ -87,4 +87,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUpdatedAt(): ?\DateTimeImmutable { return $this->updatedAt; }
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static { $this->updatedAt = $updatedAt; return $this; }
+
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): static
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
 }

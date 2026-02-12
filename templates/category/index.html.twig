@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Catégories{% endblock %}
+
+{% block body %}
+<div class="auth-bg">
+  <div class="admin-wrap">
+
+    <div class="admin-head">
+      <h1 class="admin-title">Gestion des catégories</h1>
+      <a class="btn-auth admin-btn" href="{{ path('admin_categories_new') }}">+ Ajouter</a>
+    </div>
+
+    <div class="admin-sep"></div>
+
+    {% for category in categories %}
+      <div class="admin-card">
+        <strong class="admin-card-title">{{ category.name }}</strong>
+
+        <div class="admin-actions">
+          <a class="admin-link" href="{{ path('admin_categories_edit', {id: category.id}) }}">Modifier</a>
+
+          <form method="post" action="{{ path('admin_categories_delete', {id: category.id}) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete_category_' ~ category.id) }}">
+            <button class="admin-btn-danger" type="submit" onclick="return confirm('Supprimer cette catégorie ?')">
+              Supprimer
+            </button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p class="admin-empty">Aucune catégorie.</p>
+    {% endfor %}
+
+    <a class="admin-back" href="{{ path('admin_dashboard') }}">← Retour dashboard</a>
+  </div>
+</div>
+{% endblock %}
