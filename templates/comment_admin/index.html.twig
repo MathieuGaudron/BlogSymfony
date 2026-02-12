@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Commentaires{% endblock %}
+
+{% block body %}
+<div class="auth-bg">
+  <div class="admin-wrap">
+    <div class="admin-head">
+      <h1 class="admin-title">Gérer les commentaires</h1>
+      <a class="admin-back" href="{{ path('admin_dashboard') }}">← Retour</a>
+    </div>
+
+    <div class="admin-sep"></div>
+
+    <h2 class="comments-title">En attente</h2>
+
+    {% for c in pending %}
+      <div class="admin-card">
+        <div>
+          <div class="admin-card-title">
+            <strong>{{ c.author.firstName ?? 'Anonyme' }}</strong> • {{ c.createdAt|date('d/m/Y H:i') }}
+          </div>
+          <div class="admin-empty">Post : {{ c.post.title }}</div>
+          <p class="comment-text">{{ c.content }}</p>
+        </div>
+
+        <div class="admin-actions">
+          <form method="post" action="{{ path('admin_comments_approve', {id: c.id}) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('approve_comment_' ~ c.id) }}">
+            <button class="btn-auth home-add--small" type="submit">Approuver</button>
+          </form>
+
+          <form method="post" action="{{ path('admin_comments_reject', {id: c.id}) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('reject_comment_' ~ c.id) }}">
+            <button class="admin-btn-danger" type="submit" onclick="return confirm('Refuser ce commentaire ?')">
+              Refuser
+            </button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p class="admin-empty">Aucun commentaire en attente.</p>
+    {% endfor %}
+
+    <div class="admin-sep"></div>
+
+    <h2 class="comments-title">Approuvés</h2>
+
+    {% for c in approved %}
+      <div class="admin-card">
+        <div>
+          <div class="admin-card-title">
+            <strong>{{ c.author.firstName ?? 'Anonyme' }}</strong> • {{ c.createdAt|date('d/m/Y H:i') }}
+          </div>
+          <div class="admin-empty">Post : {{ c.post.title }}</div>
+          <p class="comment-text">{{ c.content }}</p>
+        </div>
+
+        <div class="admin-actions">
+          <form method="post" action="{{ path('admin_comments_reject', {id: c.id}) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('reject_comment_' ~ c.id) }}">
+            <button class="admin-btn-danger" type="submit" onclick="return confirm('Supprimer ce commentaire ?')">
+              Supprimer
+            </button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p class="admin-empty">Aucun commentaire approuvé.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
