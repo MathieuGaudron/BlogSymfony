@@ -1,3 +1,164 @@
 body {
     background-color: skyblue;
 }
+
+
+.main-nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(11,16,32,.55);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.main-nav__inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.main-nav__brand{
+  color: #eef2ff;
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-decoration: none;
+}
+
+.main-nav__links{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav-link{
+  color: rgba(238,242,255,.85);
+  text-decoration: none;
+  font-weight: 600;
+}
+.nav-link:hover{
+  color: #ddd6fe;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.post-card{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.post-head{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.post-title{
+  margin: 0;
+  color: #eef2ff;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.post-meta{
+  color: rgba(238,242,255,.75);
+  font-weight: 600;
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.post-img{
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 14px 0;
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.post-content{
+  color: rgba(238,242,255,.88);
+  line-height: 1.65;
+  margin: 10px 0 0;
+  white-space: pre-wrap;
+}
+
+.comments{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.comments-title{
+  margin: 0 0 12px;
+  color: #eef2ff;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.comment{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  margin-bottom: 10px;
+}
+
+.comment-meta{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: rgba(238,242,255,.75);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.comment-text{
+  color: rgba(238,242,255,.88);
+  white-space: pre-wrap;
+}
+
+.comment-form{
+  margin-top: 12px;
+}
+
+.comment-actions{
+  display:flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
