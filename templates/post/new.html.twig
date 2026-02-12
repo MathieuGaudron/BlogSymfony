@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un post{% endblock %}
+
+{% block body %}
+<div class="auth-bg">
+  <div class="admin-wrap">
+    <div class="admin-head">
+      <h1 class="admin-title">Créer un post</h1>
+      <a class="admin-back" href="{{ path('app_home') }}">← Retour</a>
+    </div>
+
+    <div class="admin-sep"></div>
+
+    <div class="admin-form-card">
+      {{ form_start(form, { attr: { class: 'admin-form' } }) }}
+
+        <div class="admin-field">
+          {{ form_label(form.title, null, { label_attr: { class: 'admin-label' } }) }}
+          {{ form_widget(form.title, { attr: { class: 'admin-control', placeholder: 'Titre du post' } }) }}
+          {{ form_errors(form.title) }}
+        </div>
+
+
+        <div class="admin-field">
+          {{ form_label(form.content, null, { label_attr: { class: 'admin-label' } }) }}
+          {{ form_widget(form.content, { attr: { class: 'admin-control admin-control--textarea', placeholder: 'Contenu...' } }) }}
+          {{ form_errors(form.content) }}
+        </div>
+
+
+        <div class="admin-field">
+          {{ form_label(form.category, null, { label_attr: { class: 'admin-label' } }) }}
+          {{ form_widget(form.category, { attr: { class: 'admin-control' } }) }}
+          {{ form_errors(form.category) }}
+        </div>
+
+        <div class="admin-field">
+          {{ form_label(form.image, null, { label_attr: { class: 'admin-label' } }) }}
+          {{ form_widget(form.image, { attr: { class: 'admin-control' } }) }}
+          {{ form_errors(form.image) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <div class="admin-form-actions">
+          <button class="btn-auth admin-submit" type="submit">Créer</button>
+        </div>
+
+      {{ form_end(form) }}
+    </div>
+  </div>
+</div>
+{% endblock %}
