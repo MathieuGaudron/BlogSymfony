@@ -36,7 +36,11 @@
       {% for post in posts %}
         <article class="post-card">
           <div class="post-head">
-            <h2 class="post-title">{{ post.title }}</h2>
+            <h2 class="post-title">
+              <a class="admin-link" href="{{ path('posts_show', { id: post.id }) }}">
+                {{ post.title }}
+              </a>
+            </h2>
             <div class="post-meta">
               <span>{{ post.publishedAt|date('d/m/Y H:i') }}</span>
               <span>•</span>
