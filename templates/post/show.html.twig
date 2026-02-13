@@ -20,9 +20,11 @@
         </div>
       </div>
 
-      {% if post.picture %}
-        <img class="post-img" src="{{ asset('uploads/posts/' ~ post.picture) }}" alt="">
-      {% endif %}
+        {% if post.picture %}
+            <div class="post-img-wrap">
+                <img class="post-img-responsive" src="{{ asset('uploads/posts/' ~ post.picture) }}" alt="">
+            </div>
+        {% endif %}
 
       <p class="post-content">{{ post.content }}</p>
 

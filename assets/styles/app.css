@@ -397,3 +397,17 @@ body{
   .home-filter{ width: 100%; }
   .home-select{ width: 100%; min-width: 0; }
 }
+
+.post-img-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px; 
+}
+
+.post-img-responsive {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
