@@ -26,7 +26,7 @@
           </noscript>
         </form>
 
-        {% if is_granted('ROLE_USER') %}
+        {% if is_granted('ROLE_ADMIN') %}
           <a class="btn-auth home-add home-add--small" href="{{ path('posts_new') }}">+ Post</a>
         {% endif %}
       </div>
