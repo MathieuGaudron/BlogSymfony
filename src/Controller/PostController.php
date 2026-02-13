@@ -75,5 +75,13 @@ class PostController extends AbstractController
             return $this->render('profile/posts.html.twig', [
                 'posts' => $posts,
             ]);
+    }
+
+    #[Route('/posts/{id}', name: 'posts_show', methods: ['GET'])]
+        public function show(Post $post): Response
+        {
+            return $this->render('post/show.html.twig', [
+                'post' => $post,
+            ]);
 }
 }
