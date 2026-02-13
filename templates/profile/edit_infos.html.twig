@@ -1,0 +1,19 @@
+{% block body %}
+<div class="profile-wrap">
+  <div class="profile-card">
+    <h1 class="profile-title">Modifier mes infos</h1>
+    <p class="profile-subtitle">Mets à jour ton prénom, nom et email.</p>
+
+    {{ form_start(form, { attr: { class: 'profile-form' } }) }}
+      {{ form_row(form.firstName) }}
+      {{ form_row(form.lastName) }}
+      {{ form_row(form.email) }}
+
+      <div class="profile-actions">
+        <button class="profile-btn" type="submit">Enregistrer</button>
+        <a class="profile-back" href="{{ path('app_profile_infos') }}">⬅ Retour</a>
+      </div>
+    {{ form_end(form) }}
+  </div>
+</div>
+{% endblock %}
